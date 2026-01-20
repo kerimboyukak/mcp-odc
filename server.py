@@ -19,14 +19,21 @@ def get_shouty_version(text: str) -> str:
 @mcp.tool()
 def get_order_status(order_id: str) -> str:
     """Returns shipping status. Use this whenever an order ID is mentioned."""
+    # 1. Clean the input: make it uppercase and remove any spaces
     clean_id = order_id.strip().upper()
     
+    # 2. Fix the "789" vs "ORD-789" problem
     if not clean_id.startswith("ORD-"):
         clean_id = f"ORD-{clean_id}"
         
-    orders = {"ORD-123": "Shipped", "ORD-456": "Processing", "ORD-789": "Delivered"}
+    orders = {
+        "ORD-123": "Shipped",
+        "ORD-456": "Processing",
+        "ORD-789": "Delivered"
+    }
     
-    return orders.get(clean_id, f"Error: Order {clean_id} not found in our records.")
+    # 3. Return a helpful error for debugging
+    return orders.get(clean_id, f"System Error: ID '{clean_id}' was searched but not found in the dictionary.")
 
 if __name__ == "__main__":
     mcp.run(transport="streamable-http")
