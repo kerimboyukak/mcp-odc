@@ -26,11 +26,8 @@ def get_order_status(order_id: str) -> str:
     if not clean_id.startswith("ORD-"):
         clean_id = f"ORD-{clean_id}"
         
-    orders = {
-        "ORD-123 Shipped",
-        "ORD-456 Processing",
-        "ORD-789 Delivered"
-    }
+    orders = "ORD-123: Shipped, ORD-456: Processing, ORD-789: Delivered"
+        
     
     # 3. Return a helpful error for debugging
     return orders.get(clean_id, f"System Error: ID '{clean_id}' was searched but not found in the dictionary.")
