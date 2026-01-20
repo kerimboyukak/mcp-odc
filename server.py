@@ -27,9 +27,9 @@ def get_order_status(order_id: str) -> str:
         clean_id = f"ORD-{clean_id}"
         
     orders = {
-        "ORD-123": "Shipped",
-        "ORD-456": "Processing",
-        "ORD-789": "Delivered"
+        "ORD-123 Shipped",
+        "ORD-456 Processing",
+        "ORD-789 Delivered"
     }
     
     # 3. Return a helpful error for debugging
